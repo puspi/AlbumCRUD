@@ -1,0 +1,32 @@
+<?php
+// module/Album/view/album/album/index.phtml:
+
+$title = 'My admin';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<p>
+    <button type="button" class="btn btn-default"><a href="admin/admin/add">Add new admin</a></button>
+
+</p>
+
+<table class="table table-striped table-bordered table-condensed">
+    <tr>
+        <th>Username</th>
+        <th>Password</th>
+        <th>&nbsp;</th>
+    </tr>
+    <?php foreach ($admins as $admin) : ?>
+        <tr>
+            <td><?php echo $this->escapeHtml($admin->title);?></td>
+            <td><?php echo $this->escapeHtml($admin->artist);?></td>
+            <td>
+                <button type="button" class="btn btn-default"> <a href="<?php echo $this->url('admin',
+                        array('action'=>'edit', 'id' => $admin->id));?>">Edit</a></button>
+                <button type="button" class="btn btn-default"><a href="<?php echo $this->url('admin',
+                        array('action'=>'delete', 'id' => $admin->id));?>">Delete</a></button>
+
+            </td>
+        </tr>
+    <?php endforeach; ?>
+</table>
